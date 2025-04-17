@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Windows 95 Desktop</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Welcome Popup -->
+    <div class="win95-dialog" id="welcome-popup">
+        <div class="win95-dialog-titlebar">
+            <div class="win95-dialog-title">
+                <i class="fas fa-info-circle"></i> Welcome to NPM
+            </div>
+            <div class="win95-dialog-controls">
+                <button class="win95-button close-button" id="close-welcome">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="win95-dialog-content">
+            <div class="win95-dialog-icon">
+                <i class="fas fa-flag"></i>
+            </div>
+            <div class="win95-dialog-message">
+                <p>Welcome to the NPM Windows 95 Experience!</p>
+                <p>Click on any desktop icon to open a window.</p>
+                <p>Use the Start menu to navigate through the site.</p>
+                <p><strong>NPM Token Address:</strong> 0x1234...5678</p>
+                <p><strong>Network:</strong> Solana</p>
+            </div>
+        </div>
+        <div class="win95-dialog-buttons">
+            <button class="win95-button-primary" id="ok-welcome">OK</button>
+        </div>
+    </div>
+
+    <div class="desktop">
+        <!-- Desktop Icons -->
+        <div class="desktop-icons">
+            <div class="desktop-icon" onclick="window.open('https://pump.fun', '_blank')">
+                <i class="fas fa-rocket"></i>
+                <span>Pump.fun</span>
+            </div>
+            <div class="desktop-icon" data-window="services-window">
+                <i class="fas fa-cogs"></i>
+                <span>Services</span>
+            </div>
+            <div class="desktop-icon" data-window="documents-window">
+                <i class="fas fa-file-alt"></i>
+                <span>Notepad</span>
+            </div>
+            <div class="desktop-icon" onclick="window.open('https://twitter.com/npmtoken', '_blank')">
+                <i class="fab fa-twitter"></i>
+                <span>Twitter</span>
+            </div>
+            <div class="desktop-icon" onclick="window.open('https://t.me/npmtoken', '_blank')">
+                <i class="fab fa-telegram"></i>
+                <span>Telegram</span>
+            </div>
+            <div class="desktop-icon" data-window="recycle-bin">
+                <i class="fas fa-trash"></i>
+                <span>Recycle Bin</span>
+            </div>
+            <div class="desktop-icon" data-window="my-computer">
+                <i class="fas fa-desktop"></i>
+                <span>My Computer</span>
+            </div>
+        </div>
+
+        <!-- Documents Window -->
+        <div class="win95-window" id="documents-window">
+            <div class="win95-titlebar">
+                <span><i class="fas fa-file-lines"></i> NPM Documentation</span>
+                <div class="win95-controls">
+                    <button class="win95-button">_</button>
+                    <button class="win95-button">□</button>
+                    <button class="win95-button">×</button>
+                </div>
+            </div>
+            <div class="win95-content">
+                <div class="documents-list">
+                    <div class="document-section">
+                        <h3><i class="fas fa-info-circle"></i> Introduction</h3>
+                        <p>NPM (Network Protocol Management) is a revolutionary token designed to bridge the gap between traditional finance and decentralized networks. Our mission is to create a seamless ecosystem for protocol management and network optimization.</p>
+                        <p><strong>Launch Platform:</strong> NPM will be launching exclusively on <a href="https://pump.fun" target="_blank">pump.fun</a>, the premier platform for token launches and community building.</p>
+                    </div>
+                    
+                    <div class="document-section">
+                        <h3><i class="fas fa-coins"></i> Token Information</h3>
+                        <ul>
+                            <li><strong>Token Name:</strong> NPM</li>
+                            <li><strong>Token Symbol:</strong> $NPM</li>
+                            <li><strong>Total Supply:</strong> 1,000,000,000 NPM</li>
+                            <li><strong>Contract Address:</strong> 0x1234...5678</li>
+                            <li><strong>Network:</strong> Solana</li>
+                            <li><strong>Launch Date:</strong> Coming Soon on pump.fun</li>
+                        </ul>
+                    </div>
+
+                    <div class="document-section">
+                        <h3><i class="fas fa-rocket"></i> Launch Details</h3>
+                        <ul>
+                            <li><strong>Platform:</strong> pump.fun</li>
+                            <li><strong>Initial Price:</strong> TBA</li>
+                            <li><strong>Vesting Period:</strong> 6 months</li>
+                            <li><strong>Lock Period:</strong> 3 months</li>
+                        </ul>
+                        <p>Join our community on pump.fun to be the first to know when NPM launches!</p>
+                    </div>
+
+                    <div class="document-section">
+                        <h3><i class="fas fa-road"></i> Roadmap</h3>
+                        <ul>
+                            <li><strong>Phase 1 (Q1 2025)</strong>
+                                <ul>
+                                    <li>Token Launch on pump.fun</li>
+                                    <li>Website Development</li>
+                                    <li>Community Building</li>
+                                </ul>
+                            </li>
+                            <li><strong>Phase 2 (Q2 2025)</strong>
+                                <ul>
+                                    <li>Protocol Integration</li>
+                                    <li>Partnership Announcements</li>
+                                    <li>Exchange Listings</li>
+                                </ul>
+                            </li>
+                            <li><strong>Phase 3 (Q3 2025)</strong>
+                                <ul>
+                                    <li>Platform Launch</li>
+                                    <li>Mobile App Development</li>
+                                    <li>Advanced Features</li>
+                                </ul>
+                            </li>
+                            <li><strong>Phase 4 (Q4 2025)</strong>
+                                <ul>
+                                    <li>Global Expansion</li>
+                                    <li>Enterprise Solutions</li>
+                                    <li>Ecosystem Growth</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="document-section">
+                        <h3><i class="fas fa-chart-line"></i> Tokenomics</h3>
+                        <ul>
+                            <li><strong>Liquidity Pool:</strong> 40%</li>
+                            <li><strong>Development:</strong> 20%</li>
+                            <li><strong>Marketing:</strong> 15%</li>
+                            <li><strong>Team:</strong> 15%</li>
+                            <li><strong>Community Rewards:</strong> 10%</li>
+                        </ul>
+                    </div>
+
+                    <div class="document-section">
+                        <h3><i class="fas fa-link"></i> Important Links</h3>
+                        <ul>
+                            <li><a href="https://pump.fun" target="_blank">Official Website (pump.fun)</a></li>
+                            <li><a href="https://pump.fun/npm" target="_blank">NPM Launch Page</a></li>
+                            <li><a href="#" target="_blank">Whitepaper</a></li>
+                            <li><a href="#" target="_blank">Twitter</a></li>
+                            <li><a href="#" target="_blank">Telegram</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Window -->
+        <div class="win95-window" id="settings-window">
+            <div class="win95-titlebar">
+                <span><i class="fas fa-gear"></i> Settings</span>
+                <div class="win95-controls">
+                    <button class="win95-button">_</button>
+                    <button class="win95-button">□</button>
+                    <button class="win95-button">×</button>
+                </div>
+            </div>
+            <div class="win95-content">
+                <div class="documents-list">
+                    <div class="document-section">
+                        <h3><i class="fas fa-palette"></i> Appearance</h3>
+                        <ul>
+                            <li><strong>Theme:</strong> Windows 95</li>
+                            <li><strong>Background:</strong> Classic Blue</li>
+                            <li><strong>Resolution:</strong> 800x600</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="document-section">
+                        <h3><i class="fas fa-language"></i> Language</h3>
+                        <ul>
+                            <li><strong>Current:</strong> English</li>
+                            <li><strong>Available:</strong> English, Spanish, French</li>
+                        </ul>
+                    </div>
+
+                    <div class="document-section">
+                        <h3><i class="fas fa-bell"></i> Notifications</h3>
+                        <ul>
+                            <li><strong>Launch Alerts:</strong> Enabled</li>
+                            <li><strong>Price Updates:</strong> Enabled</li>
+                            <li><strong>Community News:</strong> Enabled</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="taskbar">
+        <div class="start-button">
+            <i class="fas fa-windows"></i>
+            <span>Windows</span>
+        </div>
+        <div class="taskbar-items">
+            <!-- Taskbar items will be added dynamically -->
+        </div>
+        <div class="taskbar-time" id="taskbar-time">12:00 PM</div>
+    </div>
+
+    <div class="start-menu">
+        <div class="start-menu-item" onclick="window.open('https://pump.fun', '_blank')">
+            <i class="fas fa-rocket"></i>
+            <span>Pump.fun</span>
+        </div>
+        <div class="start-menu-item">
+            <i class="fas fa-file-lines"></i>
+            <span>NPM Docs</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

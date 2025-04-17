@@ -1,0 +1,1146 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'MS Sans Serif', 'Microsoft Sans Serif', sans-serif;
+    user-select: none;
+}
+
+:root {
+    --win95-gray: #c0c0c0;
+    --win95-blue: #000080;
+    --win95-darker: #808080;
+    --win95-light: #ffffff;
+    --win95-border: #000000;
+    --win95-text: #000000;
+    --win95-highlight: #000080;
+    --win95-shadow: #808080;
+    --win95-taskbar: #c0c0c0;
+}
+
+body {
+    background-color: var(--win95-blue);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+}
+
+/* Desktop background */
+.desktop {
+    flex: 1;
+    position: relative;
+    background-color: var(--win95-blue);
+    background-image: url('images/windows95-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 20px;
+    overflow: hidden;
+}
+
+/* Desktop icons */
+.desktop-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 100px;
+}
+
+.desktop-icon {
+    width: 100px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--win95-light);
+    text-align: center;
+    padding: 5px;
+    border-radius: 0;
+    transition: all 0.2s;
+    position: relative;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.desktop-icon:hover {
+    background-color: transparent;
+    color: var(--win95-light);
+}
+
+.desktop-icon.selected {
+    background-color: transparent;
+    color: var(--win95-light);
+}
+
+.desktop-icon i {
+    font-size: 32px;
+    margin-bottom: 8px;
+    color: var(--win95-light);
+    text-shadow: 2px 2px 0 var(--win95-blue), -2px -2px 0 var(--win95-blue), 2px -2px 0 var(--win95-blue), -2px 2px 0 var(--win95-blue);
+}
+
+.desktop-icon.selected i {
+    color: var(--win95-light);
+    text-shadow: 2px 2px 0 var(--win95-blue), -2px -2px 0 var(--win95-blue), 2px -2px 0 var(--win95-blue), -2px 2px 0 var(--win95-blue);
+}
+
+.desktop-icon span {
+    font-size: 12px;
+    max-width: 90px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-shadow: 1px 1px 0 var(--win95-blue);
+    background-color: transparent;
+    padding: 1px 3px;
+    border-radius: 2px;
+    width: 90%;
+    text-align: center;
+    color: var(--win95-light);
+}
+
+.desktop-icon.selected span {
+    color: var(--win95-light);
+    text-shadow: 1px 1px 0 var(--win95-blue);
+}
+
+/* Taskbar */
+.taskbar {
+    height: 28px;
+    background: var(--win95-taskbar);
+    border-top: 2px solid var(--win95-light);
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+    position: relative;
+    z-index: 1000;
+}
+
+.start-button {
+    background: var(--win95-gray);
+    border: 2px solid;
+    border-color: var(--win95-light) var(--win95-darker) var(--win95-darker) var(--win95-light);
+    padding: 2px 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.start-button:active {
+    border-color: var(--win95-darker) var(--win95-light) var(--win95-light) var(--win95-darker);
+}
+
+.taskbar-items {
+    flex: 1;
+    display: flex;
+    gap: 5px;
+    overflow-x: auto;
+    padding: 0 5px;
+}
+
+.taskbar-item {
+    background: var(--win95-gray);
+    border: 1px solid;
+    border-color: var(--win95-darker) var(--win95-light) var(--win95-light) var(--win95-darker);
+    padding: 2px 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    cursor: pointer;
+    min-width: 120px;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.taskbar-item:hover {
+    background: var(--win95-darker);
+}
+
+.taskbar-item.active {
+    border-color: var(--win95-light) var(--win95-darker) var(--win95-darker) var(--win95-light);
+}
+
+.taskbar-time {
+    background: var(--win95-gray);
+    border: 1px solid;
+    border-color: var(--win95-darker) var(--win95-light) var(--win95-light) var(--win95-darker);
+    padding: 2px 5px;
+    font-size: 12px;
+    min-width: 80px;
+    text-align: center;
+}
+
+/* Start Menu */
+.start-menu {
+    position: absolute;
+    bottom: 28px;
+    left: 0;
+    background: var(--win95-gray);
+    border: 2px solid;
+    border-color: var(--win95-light) var(--win95-darker) var(--win95-darker) var(--win95-light);
+    width: 200px;
+    display: none;
+    z-index: 1001;
+}
+
+.start-menu.active {
+    display: block;
+}
+
+.start-menu-item {
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.start-menu-item:hover {
+    background: var(--win95-blue);
+    color: var(--win95-light);
+}
+
+/* Window styling */
+.win95-window {
+    background: var(--win95-gray);
+    border: 2px solid;
+    border-color: var(--win95-light) var(--win95-darker) var(--win95-darker) var(--win95-light);
+    border-radius: 0;
+    box-shadow: 2px 2px 0 var(--win95-border);
+    width: 800px;
+    height: 600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    overflow: auto;
+    display: none;
+}
+
+.win95-window.maximized {
+    width: 100%;
+    height: calc(100vh - 40px);
+    top: 0;
+    left: 0;
+    transform: none;
+}
+
+.win95-titlebar {
+    background: linear-gradient(to right, var(--win95-blue), #0000a0);
+    color: var(--win95-light);
+    padding: 3px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: move;
+    font-weight: bold;
+    font-size: 12px;
+    height: 20px;
+}
+
+.win95-titlebar i {
+    margin-right: 5px;
+}
+
+.win95-controls {
+    display: flex;
+    gap: 2px;
+}
+
+.win95-button {
+    width: 16px;
+    height: 14px;
+    background: var(--win95-gray);
+    border: 1px solid;
+    border-color: var(--win95-light) var(--win95-darker) var(--win95-darker) var(--win95-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+.win95-button:hover {
+    background: var(--win95-darker);
+}
+
+.win95-content {
+    padding: 10px;
+    background: var(--win95-gray);
+    height: calc(100% - 20px);
+    overflow: auto;
+}
+
+/* Buttons */
+.win95-button-primary {
+    padding: 4px 8px;
+    font-size: 1rem;
+    background: var(--win95-gray);
+    color: var(--win95-text);
+    border: 2px solid;
+    border-color: var(--win95-light) var(--win95-darker) var(--win95-darker) var(--win95-light);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.win95-button-primary:hover {
+    border-color: var(--win95-darker) var(--win95-light) var(--win95-light) var(--win95-darker);
+}
+
+.win95-button-primary:active {
+    border-color: var(--win95-darker) var(--win95-light) var(--win95-light) var(--win95-darker);
+    padding: 5px 7px 3px 9px;
+}
+
+/* Form elements */
+.win95-input {
+    padding: 4px 8px;
+    background: var(--win95-light);
+    border: 2px solid;
+    border-color: var(--win95-darker) var(--win95-light) var(--win95-light) var(--win95-darker);
+    color: var(--win95-text);
+    font-family: 'MS Sans Serif', sans-serif;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.win95-input:focus {
+    outline: none;
+    border-color: var(--win95-blue);
+}
+
+/* Windows 95 specific elements */
+.win95-scrollbar {
+    width: 16px;
+    background: var(--win95-gray);
+    border: 1px solid;
+    border-color: var(--win95-light) var(--win95-darker) var(--win95-darker) var(--win95-light);
+}
+
+.win95-scrollbar-thumb {
+    background: var(--win95-gray);
+    border: 1px solid;
+    border-color: var(--win95-darker) var(--win95-light) var(--win95-light) var(--win95-darker);
+    height: 20px;
+}
+
+/* Context menu */
+.context-menu {
+    position: absolute;
+    background: var(--win95-gray);
+    border: 1px solid;
+    border-color: var(--win95-light) var(--win95-darker) var(--win95-darker) var(--win95-light);
+    padding: 2px 0;
+    min-width: 150px;
+    z-index: 1002;
+    display: none;
+}
+
+.context-menu.active {
+    display: block;
+}
+
+.context-menu-item {
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.context-menu-item:hover {
+    background: var(--win95-blue);
+    color: var(--win95-light);
+}
+
+.context-menu-separator {
+    height: 1px;
+    background: var(--win95-darker);
+    margin: 2px 0;
+}
+
+/* Window focus effect */
+.win95-window.active {
+    border-color: var(--win95-blue) var(--win95-blue) var(--win95-blue) var(--win95-blue);
+}
+
+/* Cursor styles */
+.desktop-icon, .win95-button, .taskbar-item, .start-menu-item, .context-menu-item {
+    cursor: pointer;
+}
+
+/* Selection highlight */
+::selection {
+    background: var(--win95-blue);
+    color: var(--win95-light);
+}
+
+/* Right-click menu for desktop */
+.desktop-context-menu {
+    position: absolute;
+    background: var(--win95-gray);
+    border: 1px solid;
+    border-color: var(--win95-light) var(--win95-darker) var(--win95-darker) var(--win95-light);
+    padding: 2px 0;
+    min-width: 150px;
+    z-index: 1002;
+    display: none;
+}
+
+.desktop-context-menu.active {
+    display: block;
+}
+
+/* Window animation */
+@keyframes windowOpen {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.win95-window[style*="display: block"] {
+    animation: windowOpen 0.3s ease-out;
+}
+
+/* Taskbar notification area */
+.taskbar-notification {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: auto;
+    padding-right: 5px;
+}
+
+.notification-icon {
+    width: 16px;
+    height: 16px;
+    background: var(--win95-gray);
+    border: 1px solid;
+    border-color: var(--win95-light) var(--win95-darker) var(--win95-darker) var(--win95-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+}
+
+/* Navbar styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 4px;
+    background: var(--win95-gray);
+    border-bottom: 2px solid var(--win95-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--win95-text);
+    padding: 2px 8px;
+    background: var(--win95-gray);
+    border: 2px solid;
+    border-color: var(--win95-light) var(--win95-darker) var(--win95-darker) var(--win95-light);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 4px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--win95-text);
+    padding: 2px 8px;
+    background: var(--win95-gray);
+    border: 2px solid;
+    border-color: var(--win95-light) var(--win95-darker) var(--win95-darker) var(--win95-light);
+    transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+    border-color: var(--win95-darker) var(--win95-light) var(--win95-light) var(--win95-darker);
+}
+
+/* Hero section */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.terminal-window {
+    background: var(--win95-gray);
+    border: 2px solid;
+    border-color: var(--win95-light) var(--win95-darker) var(--win95-darker) var(--win95-light);
+    padding: 20px;
+    max-width: 600px;
+    width: 100%;
+}
+
+.animate-text {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+    color: var(--win95-text);
+}
+
+/* Services section */
+.services {
+    padding: 5rem 2rem;
+    background: var(--win95-gray);
+}
+
+.services h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--win95-text);
+}
+
+.service-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card {
+    padding: 2rem;
+    text-align: center;
+    background: var(--win95-gray);
+    border: 2px solid;
+    border-color: var(--win95-light) var(--win95-darker) var(--win95-darker) var(--win95-light);
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--win95-darker) var(--win95-light) var(--win95-light) var(--win95-darker);
+}
+
+.service-card i {
+    font-size: 2.5rem;
+    color: var(--win95-blue);
+    margin-bottom: 1rem;
+}
+
+/* About section */
+.about {
+    padding: 5rem 2rem;
+    text-align: center;
+    background: var(--win95-gray);
+}
+
+.code-block {
+    background: var(--win95-gray);
+    border: 2px solid;
+    border-color: var(--win95-light) var(--win95-darker) var(--win95-darker) var(--win95-light);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+/* Contact section */
+.contact {
+    padding: 5rem 2rem;
+    background: var(--win95-gray);
+}
+
+.contact h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--win95-text);
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 8px;
+    background: var(--win95-light);
+    border: 2px solid;
+    border-color: var(--win95-darker) var(--win95-light) var(--win95-light) var(--win95-darker);
+    color: var(--win95-text);
+    font-family: 'MS Sans Serif', sans-serif;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--win95-blue);
+}
+
+.contact-form textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: var(--win95-gray);
+    color: var(--win95-text);
+    border-top: 2px solid var(--win95-border);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero p {
+        font-size: 1.2rem;
+    }
+    
+    body {
+        font-size: 14px;
+    }
+    
+    .desktop-icons {
+        gap: 10px;
+        width: 80px;
+    }
+    
+    .desktop-icon {
+        width: 80px;
+        height: 70px;
+    }
+    
+    .desktop-icon i {
+        font-size: 24px;
+    }
+    
+    .desktop-icon span {
+        font-size: 10px;
+        max-width: 70px;
+    }
+    
+    .win95-window {
+        width: 90%;
+        max-width: 500px;
+        max-height: 80vh;
+    }
+    
+    .win95-titlebar {
+        height: 24px;
+    }
+    
+    .win95-titlebar span {
+        font-size: 12px;
+    }
+    
+    .win95-button {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .win95-content {
+        padding: 10px;
+    }
+    
+    .win95-content h2 {
+        font-size: 18px;
+    }
+    
+    .win95-content p {
+        font-size: 12px;
+    }
+    
+    .win95-form-group label {
+        font-size: 12px;
+    }
+    
+    .win95-form-group input,
+    .win95-form-group textarea {
+        font-size: 12px;
+        padding: 5px;
+    }
+    
+    .win95-button-primary {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+    
+    .taskbar {
+        height: 24px;
+    }
+    
+    .start-button {
+        padding: 0 5px;
+        font-size: 12px;
+    }
+    
+    .start-button i {
+        font-size: 14px;
+    }
+    
+    .taskbar-time {
+        font-size: 12px;
+        padding: 0 5px;
+    }
+    
+    .start-menu {
+        width: 200px;
+    }
+    
+    .start-menu-item {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+    
+    .start-menu-item i {
+        font-size: 14px;
+    }
+    
+    .win95-dialog {
+        width: 90%;
+        max-width: 350px;
+    }
+    
+    .win95-dialog-titlebar {
+        height: 18px;
+        font-size: 10px;
+    }
+    
+    .win95-dialog-content {
+        padding: 10px;
+    }
+    
+    .win95-dialog-icon {
+        font-size: 24px;
+        width: 30px;
+        height: 30px;
+    }
+    
+    .win95-dialog-message {
+        font-size: 10px;
+    }
+    
+    .win95-dialog-message p {
+        margin-bottom: 5px;
+    }
+    
+    .win95-dialog-buttons {
+        padding: 5px;
+    }
+    
+    .win95-dialog-buttons .win95-button-primary {
+        min-width: 60px;
+        font-size: 10px;
+        padding: 3px 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 12px;
+    }
+    
+    .desktop-icons {
+        gap: 8px;
+        width: 70px;
+    }
+    
+    .desktop-icon {
+        width: 70px;
+        height: 60px;
+    }
+    
+    .desktop-icon i {
+        font-size: 20px;
+    }
+    
+    .desktop-icon span {
+        font-size: 9px;
+        max-width: 60px;
+    }
+    
+    .win95-window {
+        width: 95%;
+        max-width: 400px;
+    }
+    
+    .win95-titlebar {
+        height: 22px;
+    }
+    
+    .win95-titlebar span {
+        font-size: 10px;
+    }
+    
+    .win95-button {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .win95-content {
+        padding: 8px;
+    }
+    
+    .win95-content h2 {
+        font-size: 16px;
+    }
+    
+    .win95-content p {
+        font-size: 10px;
+    }
+    
+    .win95-form-group label {
+        font-size: 10px;
+    }
+    
+    .win95-form-group input,
+    .win95-form-group textarea {
+        font-size: 10px;
+        padding: 4px;
+    }
+    
+    .win95-button-primary {
+        font-size: 10px;
+        padding: 4px 8px;
+    }
+    
+    .taskbar {
+        height: 22px;
+    }
+    
+    .start-button {
+        padding: 0 4px;
+        font-size: 10px;
+    }
+    
+    .start-button i {
+        font-size: 12px;
+    }
+    
+    .taskbar-time {
+        font-size: 10px;
+        padding: 0 4px;
+    }
+    
+    .start-menu {
+        width: 180px;
+    }
+    
+    .start-menu-item {
+        padding: 4px 8px;
+        font-size: 10px;
+    }
+    
+    .start-menu-item i {
+        font-size: 12px;
+    }
+    
+    .win95-dialog {
+        width: 95%;
+        max-width: 300px;
+    }
+    
+    .win95-dialog-titlebar {
+        height: 16px;
+        font-size: 9px;
+    }
+    
+    .win95-dialog-content {
+        padding: 8px;
+    }
+    
+    .win95-dialog-icon {
+        font-size: 20px;
+        width: 25px;
+        height: 25px;
+    }
+    
+    .win95-dialog-message {
+        font-size: 9px;
+    }
+    
+    .win95-dialog-message p {
+        margin-bottom: 4px;
+    }
+    
+    .win95-dialog-buttons {
+        padding: 4px;
+    }
+    
+    .win95-dialog-buttons .win95-button-primary {
+        min-width: 50px;
+        font-size: 9px;
+        padding: 2px 6px;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+    .desktop-icon:hover {
+        background-color: transparent;
+    }
+    
+    .win95-button:hover {
+        background-color: var(--win95-gray);
+    }
+    
+    .win95-button-primary:hover {
+        background-color: var(--win95-blue);
+    }
+    
+    .start-menu-item:hover {
+        background-color: var(--win95-highlight);
+    }
+    
+    .context-menu-item:hover {
+        background-color: var(--win95-highlight);
+    }
+}
+
+/* Prevent text selection on mobile */
+@media (max-width: 768px) {
+    * {
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
+.documents-list {
+    padding: 10px;
+}
+
+.document-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    border: 1px solid var(--win95-border);
+    background: var(--win95-light);
+}
+
+.document-item:hover {
+    background: var(--win95-blue);
+    color: white;
+}
+
+.document-item i {
+    margin-right: 10px;
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+}
+
+.document-item span {
+    font-size: 14px;
+}
+
+.document-section {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid var(--win95-border);
+    background: var(--win95-light);
+}
+
+.document-section h3 {
+    color: var(--win95-blue);
+    margin-bottom: 10px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.document-section h3 i {
+    font-size: 14px;
+    color: var(--win95-blue);
+}
+
+.document-section p {
+    margin: 10px 0;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.document-section ul {
+    list-style-type: none;
+    padding-left: 20px;
+    margin: 5px 0;
+}
+
+.document-section ul li {
+    margin: 5px 0;
+    font-size: 12px;
+    position: relative;
+}
+
+.document-section ul li:before {
+    content: "•";
+    position: absolute;
+    left: -15px;
+    color: var(--win95-blue);
+}
+
+.document-section ul ul {
+    margin-left: 20px;
+}
+
+.document-section a {
+    color: var(--win95-blue);
+    text-decoration: none;
+}
+
+.document-section a:hover {
+    text-decoration: underline;
+}
+
+/* Windows 95 Dialog */
+.win95-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: var(--win95-gray);
+    border: 2px solid;
+    border-color: var(--win95-light) var(--win95-darker) var(--win95-darker) var(--win95-light);
+    box-shadow: 2px 2px 0 var(--win95-border);
+    z-index: 2000;
+    display: none;
+}
+
+.win95-dialog.active {
+    display: block;
+    animation: dialogOpen 0.3s ease-out;
+}
+
+@keyframes dialogOpen {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.win95-dialog-titlebar {
+    background: linear-gradient(to right, var(--win95-blue), #0000a0);
+    color: var(--win95-light);
+    padding: 3px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 12px;
+    height: 20px;
+}
+
+.win95-dialog-title {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.win95-dialog-controls {
+    display: flex;
+    gap: 2px;
+}
+
+.win95-dialog-content {
+    padding: 15px;
+    display: flex;
+    gap: 15px;
+    background: var(--win95-gray);
+}
+
+.win95-dialog-icon {
+    font-size: 32px;
+    color: var(--win95-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+.win95-dialog-message {
+    flex: 1;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.win95-dialog-message p {
+    margin-bottom: 8px;
+}
+
+.win95-dialog-buttons {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    background: var(--win95-gray);
+    border-top: 1px solid var(--win95-darker);
+}
+
+.win95-dialog-buttons .win95-button-primary {
+    min-width: 80px;
+}
+
+/* Overlay for dialog */
+.dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1999;
+    display: none;
+}
+
+.dialog-overlay.active {
+    display: block;
+} 
